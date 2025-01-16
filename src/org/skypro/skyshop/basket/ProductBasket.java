@@ -28,6 +28,16 @@ public class ProductBasket {
         return priceOfBasket;
     }
 
+    public int getCountOfSpecialProduct () {
+        int countOfSpecialProduct = 0;
+        for (Product product : basket) {
+            if (product.isSpecial()) {
+                countOfSpecialProduct++;
+            }
+        }
+        return countOfSpecialProduct;
+    }
+
     public boolean isEmptyBasket() {
         for (Product product : basket) {
             if (product != null) {
@@ -48,6 +58,8 @@ public class ProductBasket {
             }
         }
         System.out.println("Итого: <" + getPriceOfBasket() + ">");
+        System.out.println("Специальных товаров: " + this.getCountOfSpecialProduct());
+
     }
 
     public boolean checkProduct(Product product) {
