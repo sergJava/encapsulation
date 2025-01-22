@@ -1,10 +1,9 @@
 package org.skypro.skyshop;
 
 import org.skypro.skyshop.basket.ProductBasket;
-import org.skypro.skyshop.product.DiscountedProduct;
-import org.skypro.skyshop.product.FixPriceProduct;
-import org.skypro.skyshop.product.Product;
-import org.skypro.skyshop.product.SimpleProduct;
+import org.skypro.skyshop.product.*;
+
+import java.util.Arrays;
 
 public class App {
 
@@ -15,21 +14,29 @@ public class App {
         FixPriceProduct tomato = new FixPriceProduct("tomato");
         DiscountedProduct potato = new DiscountedProduct("potato", 50, 20);
 
+        Article appleArticle = new Article("apple", "green apple");
+        Article tomatoJuiceArticle = new Article("tomato juice", "tomato with apple juice 50%");
+        Article smallBananaArticle = new Article("small ban", "by New Zeland");
+        Article appleJuiceArticle = new Article("app juice", "app juice 100%");
+        Article appleJuiceArticle2 = new Article("app juice2", "app juice 100%");
+        Article appleJuiceArticle3 = new Article("app juice3", "app juice 100%");
+
         ProductBasket productBasket = new ProductBasket();
 
-        //1. Добавление продукта в корзину
-        productBasket.addProduct(apple);
-        productBasket.addProduct(banana);
-        productBasket.addProduct(pineapple);
-        productBasket.addProduct(tomato);
-        productBasket.addProduct(potato);
+        SearchEngine searchEngine = new SearchEngine(15);
+        searchEngine.add(apple);
+        searchEngine.add(banana);
+        searchEngine.add(pineapple);
+        searchEngine.add(tomato);
+        searchEngine.add(potato);
+        searchEngine.add(appleArticle);
+        searchEngine.add(tomatoJuiceArticle);
+        searchEngine.add(smallBananaArticle);
+        searchEngine.add(appleJuiceArticle);
+        searchEngine.add(appleJuiceArticle2);
+        searchEngine.add(appleJuiceArticle3);
 
-        //2. Печать содержимого корзины с несколькими товарами
-        productBasket.printBasket();
-
-        //3. Получение стоимости корзины с несколькими товарами
-        System.out.println("стоимость корзины " + productBasket.getPriceOfBasket());
-
+        System.out.println(Arrays.toString(searchEngine.search("apple")));
 
     }
 }

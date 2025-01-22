@@ -31,7 +31,7 @@ public class ProductBasket {
     public int getCountOfSpecialProduct () {
         int countOfSpecialProduct = 0;
         for (Product product : basket) {
-            if (product.isSpecial()) {
+            if (product != null && product.isSpecial()) {
                 countOfSpecialProduct++;
             }
         }
