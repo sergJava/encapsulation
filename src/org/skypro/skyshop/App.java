@@ -2,6 +2,8 @@ package org.skypro.skyshop;
 
 import org.skypro.skyshop.basket.ProductBasket;
 import org.skypro.skyshop.product.*;
+import org.skypro.skyshop.search.SearchEngine;
+import org.skypro.skyshop.search.Searchable;
 
 import java.util.Arrays;
 
@@ -37,6 +39,10 @@ public class App {
         searchEngine.add(appleJuiceArticle3);
 
         System.out.println(Arrays.toString(searchEngine.search("apple")));
+
+        for (Searchable searchable : searchEngine.searchables) {
+            System.out.println(searchable.getStringRepresentation());
+        }
 
     }
 }
