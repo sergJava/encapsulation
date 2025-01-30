@@ -13,7 +13,7 @@ public class Article implements Searchable {
 
     @Override
     public String toString() {
-        return this.name + "\n"
+        return this.name + " : "
                 + this.text;
     }
 
