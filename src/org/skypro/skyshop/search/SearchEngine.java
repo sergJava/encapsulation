@@ -1,11 +1,17 @@
 package org.skypro.skyshop.search;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SearchEngine {
-    public Searchable[] searchables;
+
+    public List<Searchable> searchables;
+
+//    public Searchable[] searchables;
     private int numberInSearchable = 0;
 
-    public SearchEngine(int size) {
-        searchables = new Searchable[size];
+    public SearchEngine() {
+        searchables = new ArrayList<>();
     }
 
     public Searchable[] search(String requestString) {
@@ -22,13 +28,17 @@ public class SearchEngine {
     }
 
     public void add(Searchable searchable) {
-        if (numberInSearchable >= searchables.length) {
-            System.out.println("нет места в массиве поиска");
-            return;
-        }
-        searchables[numberInSearchable] = searchable;
-        numberInSearchable++;
+        searchables.add(searchable);
     }
+
+//    public void add(Searchable searchable) {
+//        if (numberInSearchable >= searchables.length) {
+//            System.out.println("нет места в массиве поиска");
+//            return;
+//        }
+//        searchables[numberInSearchable] = searchable;
+//        numberInSearchable++;
+//    }
 
     public Searchable lineSearch(String search) throws BestResultNotFound {
         Searchable bestResult = null;
