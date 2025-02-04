@@ -1,28 +1,24 @@
 package org.skypro.skyshop.search;
 
+import org.skypro.skyshop.product.Product;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class SearchEngine {
 
-    public List<Searchable> searchables;
-
-//    public Searchable[] searchables;
-    private int numberInSearchable = 0;
+    private List<Searchable> searchables;
 
     public SearchEngine() {
         searchables = new ArrayList<>();
     }
 
-    public Searchable[] search(String requestString) {
-        Searchable[] results = new Searchable[5];
-        int numberOfResult = 0;
+    public List<Searchable> search(String requestString) {
+        List<Searchable> results = new ArrayList<>();
         for (Searchable searchable : searchables) {
             if (searchable != null && searchable.getSearchTerm().contains(requestString)) {
-                results[numberOfResult] = searchable;
-                numberOfResult++;
+                results.add(searchable);
             }
-            if (numberOfResult >= 5) break;
         }
         return results;
     }
@@ -31,30 +27,22 @@ public class SearchEngine {
         searchables.add(searchable);
     }
 
-//    public void add(Searchable searchable) {
-//        if (numberInSearchable >= searchables.length) {
-//            System.out.println("нет места в массиве поиска");
-//            return;
-//        }
-//        searchables[numberInSearchable] = searchable;
-//        numberInSearchable++;
-//    }
-
     public Searchable lineSearch(String search) throws BestResultNotFound {
         Searchable bestResult = null;
-        //       int indexOfBestResult = -1;
+
         int countOfBestResult = 0;
-        for (int i = 0; i < searchables.length; i++) {
+        for (Searchable searchable : searchables) {
             int temp = 0;
-            if (searchables[i] != null) {
-                temp = searchSubstring(searchables[i].getSearchTerm(), search);
+            if (searchable != null) {
+                temp = searchSubstring(searchable.getSearchTerm(), search);
             }
             if (temp > countOfBestResult) {
                 countOfBestResult = temp;
-                //               indexOfBestResult = i;
-                bestResult = searchables[i];
+                bestResult = searchable;
             }
         }
+
+
         if (bestResult == null) {
             throw new BestResultNotFound("для " + search + " нет совпадений");
         }

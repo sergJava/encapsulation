@@ -17,18 +17,31 @@ public class App {
         FixPriceProduct pineapple = new FixPriceProduct("pineapple");
         FixPriceProduct tomato = new FixPriceProduct("tomato");
         DiscountedProduct potato = new DiscountedProduct("potato", 50, 20);
+        DiscountedProduct appleDiscount = new DiscountedProduct("apple", 100, 20);
 
         ProductBasket productBasket = new ProductBasket();
+
         productBasket.addProduct(apple);
         productBasket.addProduct(banana);
         productBasket.addProduct(pineapple);
         productBasket.addProduct(tomato);
         productBasket.addProduct(potato);
         productBasket.addProduct(potato);
+        productBasket.addProduct(appleDiscount);
 
         productBasket.printBasket();
         System.out.println(productBasket.getPriceOfBasket());
         System.out.println(productBasket.getCountOfSpecialProduct());
+
+        System.out.println("удаленние продукта apple: " + productBasket.deleteProduct("apple"));
+        System.out.println("Список продуктов после удаления: ");
+        productBasket.printBasket();
+
+        System.out.println("удаленние продукта orange: " + productBasket.deleteProduct("orange"));
+        System.out.println("Список продуктов после удаления: ");
+        productBasket.printBasket();
+
+
         productBasket.cleaningBasket();
         productBasket.printBasket();
 
@@ -46,17 +59,25 @@ public class App {
         Article appleJuiceArticle3 = new Article("app juice3", "app juice 100%");
 
         SearchEngine searchEngine = new SearchEngine();
+
+        searchEngine.add(apple);
         searchEngine.add(apple);
         searchEngine.add(banana);
         searchEngine.add(pineapple);
         searchEngine.add(tomato);
         searchEngine.add(potato);
+        searchEngine.add(appleDiscount);
+        searchEngine.add(appleDiscount);
+
+
         searchEngine.add(appleArticle);
         searchEngine.add(tomatoJuiceArticle);
         searchEngine.add(smallBananaArticle);
         searchEngine.add(appleJuiceArticle);
         searchEngine.add(appleJuiceArticle2);
         searchEngine.add(appleJuiceArticle3);
+
+        System.out.println(searchEngine.search("apple"));
 
 
     }
