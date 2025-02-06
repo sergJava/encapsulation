@@ -2,20 +2,34 @@ package org.skypro.skyshop.basket;
 
 import org.skypro.skyshop.product.Product;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 
 public class ProductBasket {
-    private Product[] basket = new Product[5];
+    private List<Product> basket = new ArrayList<>();
 
     public void addProduct(Product product) {
-        for (int i = 0; i < basket.length; i++) {
-            if (basket[i] == null) {
-                basket[i] = product;
-                return;
+        basket.add(product);
+    }
+
+    public List<Product> deleteProduct(String name) {
+        List<Product> removedProducts = new ArrayList<>();
+        Iterator<Product> iterator = basket.iterator();
+
+        while (iterator.hasNext()) {
+            Product product = iterator.next();
+            if (product.getName().equals(name)) {
+                removedProducts.add(product);
+                iterator.remove();
             }
         }
-        System.out.println("невозможно добавить продукт");
+        if (removedProducts.isEmpty()) {
+            System.out.println("Список пуст");
+        }
+        return removedProducts;
     }
 
     public int getPriceOfBasket() {
@@ -28,7 +42,7 @@ public class ProductBasket {
         return priceOfBasket;
     }
 
-    public int getCountOfSpecialProduct () {
+    public int getCountOfSpecialProduct() {
         int countOfSpecialProduct = 0;
         for (Product product : basket) {
             if (product != null && product.isSpecial()) {
@@ -38,18 +52,9 @@ public class ProductBasket {
         return countOfSpecialProduct;
     }
 
-    public boolean isEmptyBasket() {
-        for (Product product : basket) {
-            if (product != null) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     public void printBasket() {
-        if (isEmptyBasket()) {
-            System.out.println("в корзине пусто");
+        if (basket.isEmpty()) {
+            System.out.println("В корзине пусто");
             return;
         }
         for (Product product : basket) {
@@ -73,7 +78,7 @@ public class ProductBasket {
     }
 
     public void cleaningBasket() {
-        Arrays.fill(basket, null);
+        basket.clear();
     }
 
 

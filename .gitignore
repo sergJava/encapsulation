@@ -5,6 +5,8 @@ out/
 *.iml
 .idea
 /out
+/src/readmeExceptions.md
+
 
 
 ### Eclipse ###
