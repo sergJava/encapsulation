@@ -2,8 +2,7 @@ package org.skypro.skyshop.search;
 
 import org.skypro.skyshop.product.Product;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class SearchEngine {
 
@@ -13,15 +12,28 @@ public class SearchEngine {
         searchables = new ArrayList<>();
     }
 
-    public List<Searchable> search(String requestString) {
-        List<Searchable> results = new ArrayList<>();
+    public Map<String, Searchable> search(String requestString) {
+        System.out.println("search = " + requestString);
+        Map<String, Searchable> results = new TreeMap<>();
         for (Searchable searchable : searchables) {
             if (searchable != null && searchable.getSearchTerm().contains(requestString)) {
-                results.add(searchable);
+                results.put(searchable.getStringRepresentation(), searchable);
             }
         }
         return results;
     }
+
+//    public List<Searchable> search(String requestString) {
+//        System.out.println("search = " + requestString);
+//        List<Searchable> results = new ArrayList<>();
+//        for (Searchable searchable : searchables) {
+//            if (searchable != null && searchable.getSearchTerm().contains(requestString)) {
+//                results.add(searchable);
+//            }
+//        }
+//        return results;
+//    }
+
 
     public void add(Searchable searchable) {
         searchables.add(searchable);
@@ -59,5 +71,11 @@ public class SearchEngine {
             indexOfSubstring = source.indexOf(substring, index);
         }
         return count;
+    }
+
+    public void printStringRepresentation(){
+        for (Searchable searchable : searchables) {
+            System.out.println(searchable.getStringRepresentation());
+        }
     }
 }

@@ -26,4 +26,5 @@ public class Article implements Searchable {
     public String getTypeObject() {
         return "ARTICLE";
     }
+
 }
