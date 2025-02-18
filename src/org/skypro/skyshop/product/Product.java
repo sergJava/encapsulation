@@ -3,6 +3,8 @@ package org.skypro.skyshop.product;
 
 import org.skypro.skyshop.search.Searchable;
 
+import java.util.Objects;
+
 public abstract class Product implements Searchable {
     private String name;
 
@@ -30,4 +32,5 @@ public abstract class Product implements Searchable {
     public abstract int getPrice();
 
     public abstract boolean isSpecial();
+
 }
