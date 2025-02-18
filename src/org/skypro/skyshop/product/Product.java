@@ -7,6 +7,7 @@ import java.util.Objects;
 
 public abstract class Product implements Searchable {
     private String name;
+    static int id = 0;
 
     @Override
     public String getSearchTerm() {
@@ -23,6 +24,7 @@ public abstract class Product implements Searchable {
             throw new IllegalArgumentException("неправильное название продукта");
         }
         this.name = name;
+        this.id++;
     }
 
     public String getName() {

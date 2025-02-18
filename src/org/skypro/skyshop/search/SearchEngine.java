@@ -23,17 +23,6 @@ public class SearchEngine {
         return results;
     }
 
-//    public List<Searchable> search(String requestString) {
-//        System.out.println("search = " + requestString);
-//        List<Searchable> results = new ArrayList<>();
-//        for (Searchable searchable : searchables) {
-//            if (searchable != null && searchable.getSearchTerm().contains(requestString)) {
-//                results.add(searchable);
-//            }
-//        }
-//        return results;
-//    }
-
 
     public void add(Searchable searchable) {
         searchables.add(searchable);
