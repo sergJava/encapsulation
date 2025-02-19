@@ -6,15 +6,15 @@ import java.util.*;
 
 public class SearchEngine {
 
-    private List<Searchable> searchables;
+    private Set<Searchable> searchables;
 
     public SearchEngine() {
-        searchables = new ArrayList<>();
+        searchables = new HashSet<>();
     }
 
-    public Map<String, Searchable> search(String requestString) {
+    public Set<Searchable> search(String requestString) {
         System.out.println("search = " + requestString);
-        Map<String, Searchable> results = new TreeMap<>();
+        Set<Searchable> results = new TreeSet<>();
         for (Searchable searchable : searchables) {
             if (searchable != null && searchable.getSearchTerm().contains(requestString)) {
                 results.put(searchable.getStringRepresentation(), searchable);
@@ -30,7 +30,6 @@ public class SearchEngine {
 
     public Searchable lineSearch(String search) throws BestResultNotFound {
         Searchable bestResult = null;
-
         int countOfBestResult = 0;
         for (Searchable searchable : searchables) {
             int temp = 0;
@@ -42,8 +41,6 @@ public class SearchEngine {
                 bestResult = searchable;
             }
         }
-
-
         if (bestResult == null) {
             throw new BestResultNotFound("для " + search + " нет совпадений");
         }
@@ -65,6 +62,20 @@ public class SearchEngine {
     public void printStringRepresentation(){
         for (Searchable searchable : searchables) {
             System.out.println(searchable.getStringRepresentation());
+        }
+    }
+
+    public void printSearchables() {
+        System.out.println("SearchEngine.printSearchables");
+        for (Searchable searchable : searchables) {
+            System.out.println(searchable);
+        }
+    }
+
+    public static class SearchableComparator implements Comparator<Searchable> {
+        @Override
+        public int compare(Searchable s1, Searchable s2) {
+
         }
     }
 }

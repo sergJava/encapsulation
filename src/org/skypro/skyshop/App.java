@@ -54,8 +54,8 @@ public class App {
         Article tomatoJuiceArticle = new Article("tomato juice", "tomato with apple juice 50%");
         Article smallBananaArticle = new Article("small ban", "by New Zeland");
         Article appleJuiceArticle = new Article("apple juice", "apple juice 100%");
-        Article appleJuiceArticle2 = new Article("apple juice2", "app juice 100% app");
-        Article appleJuiceArticle3 = new Article("app juice3", "app juice 100%");
+        Article appleJuiceArticle2 = new Article("apple juice", "app juice 100% app");
+        Article appleJuiceArticle3 = new Article("apple juice", "app juice 100%");
 
         SearchEngine searchEngine = new SearchEngine();
 
@@ -75,6 +75,8 @@ public class App {
         searchEngine.add(appleJuiceArticle);
         searchEngine.add(appleJuiceArticle2);
         searchEngine.add(appleJuiceArticle3);
+
+        searchEngine.printSearchables();
 
         System.out.println(searchEngine.search("apple"));
 
