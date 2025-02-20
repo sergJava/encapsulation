@@ -14,10 +14,10 @@ public class SearchEngine {
 
     public Set<Searchable> search(String requestString) {
         System.out.println("search = " + requestString);
-        Set<Searchable> results = new TreeSet<>();
+        Set<Searchable> results = new TreeSet<>(new SearchableComparator());
         for (Searchable searchable : searchables) {
             if (searchable != null && searchable.getSearchTerm().contains(requestString)) {
-                results.put(searchable.getStringRepresentation(), searchable);
+                results.add(searchable);
             }
         }
         return results;
@@ -75,7 +75,12 @@ public class SearchEngine {
     public static class SearchableComparator implements Comparator<Searchable> {
         @Override
         public int compare(Searchable s1, Searchable s2) {
-
+            int i = 0;
+            i = Integer.compare(s1.getName().length(), s2.getName().length());
+            if (i == 0) {
+                i = s1.getName().compareTo(s2.getName());
+            }
+            return i;
         }
     }
 }
