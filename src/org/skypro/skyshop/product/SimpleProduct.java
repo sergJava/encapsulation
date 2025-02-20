@@ -29,15 +29,15 @@ public class SimpleProduct extends Product {
         return "<" + this.getName() + "> : <" + this.price + ">";
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof SimpleProduct that)) return false;
-        return Objects.equals(this.getName(), that.getName()) && price == that.price;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.getName(), price);
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (!(o instanceof SimpleProduct that)) return false;
+//        return Objects.equals(this.getName(), that.getName()) && price == that.price;
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(this.getName(), price);
+//    }
 }

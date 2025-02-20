@@ -35,16 +35,16 @@ public class DiscountedProduct extends Product {
                 this.discountInPercent + ">%)";
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof DiscountedProduct that)) return false;
-        return Objects.equals(this.getName(), that.getName()) && basicPrice == that.basicPrice &&
-                discountInPercent == that.discountInPercent;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.getName(), basicPrice, discountInPercent);
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (!(o instanceof DiscountedProduct that)) return false;
+//        return Objects.equals(this.getName(), that.getName()) && basicPrice == that.basicPrice &&
+//                discountInPercent == that.discountInPercent;
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(this.getName(), basicPrice, discountInPercent);
+//    }
 }

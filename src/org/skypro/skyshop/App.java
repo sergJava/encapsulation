@@ -16,10 +16,11 @@ public class App {
         SimpleProduct apple2 = new SimpleProduct("apple", 200);
         DiscountedProduct banana = new DiscountedProduct("banana", 200, 10);
         FixPriceProduct pineapple = new FixPriceProduct("pineapple");
+        FixPriceProduct pineapple2 = new FixPriceProduct("bineapple");
         FixPriceProduct tomato = new FixPriceProduct("tomato");
         DiscountedProduct potato = new DiscountedProduct("potato", 50, 20);
         DiscountedProduct appleDiscount = new DiscountedProduct("apple", 100, 20);
-        DiscountedProduct appleDiscount2 = new DiscountedProduct("apple", 150, 10);
+        DiscountedProduct appleDiscount2 = new DiscountedProduct("appleDiscount", 150, 10);
 
         ProductBasket productBasket = new ProductBasket();
 
@@ -54,8 +55,8 @@ public class App {
         Article tomatoJuiceArticle = new Article("tomato juice", "tomato with apple juice 50%");
         Article smallBananaArticle = new Article("small ban", "by New Zeland");
         Article appleJuiceArticle = new Article("apple juice", "apple juice 100%");
-        Article appleJuiceArticle2 = new Article("apple juice2", "app juice 100% app");
-        Article appleJuiceArticle3 = new Article("app juice3", "app juice 100%");
+        Article appleJuiceArticle2 = new Article("apple juice", "app juice 100% app");
+        Article appleJuiceArticle3 = new Article("apple juice", "app juice 100%");
 
         SearchEngine searchEngine = new SearchEngine();
 
@@ -75,6 +76,9 @@ public class App {
         searchEngine.add(appleJuiceArticle);
         searchEngine.add(appleJuiceArticle2);
         searchEngine.add(appleJuiceArticle3);
+        searchEngine.add(pineapple2);
+
+//        searchEngine.printSearchables();
 
         System.out.println(searchEngine.search("apple"));
 
