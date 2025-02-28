@@ -32,23 +32,11 @@ public class ProductBasket {
     }
 
     public int getCountOfSpecialProduct() {
-        basket.values()
+        return (int) basket.values()
                 .stream()
+                .flatMap(Collection::stream)
                 .filter(Product::isSpecial)
-                .collect(Collectors.toSet());
-
-
-//        int countOfSpecialProduct = 0;
-//        for (List<Product> productList : basket.values()) {
-//            if (productList != null) {
-//                for (Product product : productList) {
-//                    if (product != null && product.isSpecial()) {
-//                        countOfSpecialProduct++;
-//                    }
-//                }
-//            }
-//        }
-        return countOfSpecialProduct;
+                .count();
     }
 
     public void printBasket() {
