@@ -78,7 +78,7 @@ public class App {
         searchEngine.add(appleJuiceArticle3);
         searchEngine.add(pineapple2);
 
-//        searchEngine.printSearchables();
+        searchEngine.printSearchables();
 
         System.out.println(searchEngine.search("apple"));
 
