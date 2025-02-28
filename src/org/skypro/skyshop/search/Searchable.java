@@ -8,4 +8,8 @@ public interface Searchable {
         return this.getClass().getSimpleName() + " - " + getTypeObject();
     }
 
+    String getName();
+
+
+
 }
