@@ -3,6 +3,7 @@ package org.skypro.skyshop.basket;
 import org.skypro.skyshop.product.Product;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 public class ProductBasket {
@@ -22,31 +23,20 @@ public class ProductBasket {
     }
 
     public int getPriceOfBasket() {
-        int priceOfBasket = 0;
-        for (List<Product> productList : basket.values()) {
-            if (productList != null) {
-                for (Product product : productList) {
-                    if (product != null) {
-                        priceOfBasket += product.getPrice();
-                    }
-                }
-            }
-        }
-        return priceOfBasket;
+        int sum = basket.values()
+                .stream()
+                .flatMap(Collection::stream)
+                .mapToInt(Product::getPrice)
+                .sum();
+        return sum;
     }
 
     public int getCountOfSpecialProduct() {
-        int countOfSpecialProduct = 0;
-        for (List<Product> productList : basket.values()) {
-            if (productList != null) {
-                for (Product product : productList) {
-                    if (product != null && product.isSpecial()) {
-                        countOfSpecialProduct++;
-                    }
-                }
-            }
-        }
-        return countOfSpecialProduct;
+        return (int) basket.values()
+                .stream()
+                .flatMap(Collection::stream)
+                .filter(Product::isSpecial)
+                .count();
     }
 
     public void printBasket() {
@@ -55,15 +45,11 @@ public class ProductBasket {
             System.out.println("В корзине пусто");
             return;
         }
-        for (List<Product> productList : basket.values()) {
-            if (productList != null) {
-                for (Product product : productList) {
-                    if (product != null) {
-                        System.out.println(product);
-                    }
-                }
-            }
-        }
+        basket.values()
+                .stream()
+                .flatMap(Collection::stream)
+                .forEach(System.out::println);
+
         System.out.println("Итого: <" + getPriceOfBasket() + ">");
         System.out.println("Специальных товаров: " + this.getCountOfSpecialProduct());
 
