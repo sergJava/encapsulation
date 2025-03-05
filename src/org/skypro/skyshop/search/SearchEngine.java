@@ -20,13 +20,6 @@ public class SearchEngine {
                 .filter(searchable -> searchable.getSearchTerm().contains(requestString))
                 .collect(Collectors.toCollection(()-> new TreeSet<>(new SearchableComparator())));
 
-
-//        Set<Searchable> results = new TreeSet<>(new SearchableComparator());
-//        for (Searchable searchable : searchables) {
-//            if (searchable != null && searchable.getSearchTerm().contains(requestString)) {
-//                results.add(searchable);
-//            }
-//        }
         return results;
     }
 

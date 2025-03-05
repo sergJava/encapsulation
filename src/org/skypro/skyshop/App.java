@@ -82,6 +82,11 @@ public class App {
 
         System.out.println(searchEngine.search("apple"));
 
+        try {
+            searchEngine.lineSearch("top");
+        } catch (BestResultNotFound e) {
+            e.getMessage();
+        }
 
 
     }
